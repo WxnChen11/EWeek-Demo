@@ -1,0 +1,23 @@
+*:focus {
+    outline: none;
+}
+
+#input_form{
+	position:relative;
+}
+
+::-webkit-input-placeholder {
+   color: #636363;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #636363;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #636363;  
+}
+
+:-ms-input-placeholder {  
+   color: #636363;  
+}

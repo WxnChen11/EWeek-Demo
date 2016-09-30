@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<title>IdeaBot</title>
+
+</head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<link rel="stylesheet" href="style.css">
+
+<body style='background-color:#F46524'>
+
+<img src='logo.PNG' height='150px' style='display:block; margin-right:auto; margin-left:auto;'>
+
+<p></p>
+
+<form id="input_form">
+	<div class="form=group" style='text-align:center; margin-top:180px;'>
+		<label></label>
+		<input id="text_input" type="text" class="form=control" style='border-bottom-width:2px; border-bottom-color:#000000; border-right: 0px; border-left: 0px; border-top: 0px; background-color:#F46524;' placeholder='            Hi there!' autocomplete="off">
+	</div>
+</form>
+
+<div class="" id="response_div" style="text-align:left; margin:0 auto; position:absolute; width:25%; top:230px; left: 0; right: 0;">
+</div>	
+
+<script   src="http://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+<script>
+
+var first = true;
+var i = 0;
+var q = 0;
+var responseText = ["Hi there", "I'm good", "Flying Cars", "Companies to check out: <br>1. Aeromobil<br>2. Terrafugia<br>3. New Atlas", "Here are some apps you may be interested in:<br>1. Spotify <br>2. Apple music <br>3. Google Play Music", "uber for naps", "tinder for computer programmers", "Edible toothpaste!", "Bye now!"]
+
+$("#input_form").submit(function(e) {
+    e.preventDefault();
+
+    if (first == true){
+    	$("#input_form").animate({
+    	top: "-=150px",
+    }, 500);
+
+    	first = false;
+    }
+
+    if (i >= 4){
+    	$("#response" + (i-4).toString()).remove();
+    	$("#query" + (i-4).toString()).remove();
+    }
+
+    var text = $("#text_input").val();
+    //console.log(text);
+    $("#text_input").attr("placeholder", text);
+    $("#input_form")[0].reset();
+    //console.log("submitted");
+
+    $("#response_div").append('<p id="query' + q.toString() + '" style="text-align:left;">' + text + '</p>');
+    $("#query" + q.toString()).hide().fadeIn(1000, function(){});
+    
+    $("#response_div").append('<p id="response' + i.toString() + '" style="text-align:right; font-weight:bold;">' + responseText[i] + '</p>');
+
+    console.log("#response" + i.toString());
+    $("#response" + i.toString()).hide().fadeIn(1000, function(){});
+   
+
+    i ++;
+    q ++;
+});
+var showText = function(){
+	console.log("done");
+}
+
+</script>
+
+</body>
+
+</html>
